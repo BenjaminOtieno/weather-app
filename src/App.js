@@ -1,6 +1,5 @@
 import React,{ useState } from "react";
 import DetailCard from "./components/DetailCard";
-import Header from "./components/Header";
 import SummaryCard from "./components/SummaryCard";
 
 
@@ -12,7 +11,8 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [weatherData, setWeatherData] = useState([])
   const [city, setCity] = useState('Unknown location')
-  const [weatherIcon, setWeatherIcon] = useState(`${process.env.REACT_APP_ICON_URL}10d@2x.png`)
+  const [weatherIcon, setWeatherIcon] = useState(`${process.env.REACT_APP_ICON_URL}10n@2x.png`)
+  console.log(weatherIcon)
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
@@ -25,6 +25,7 @@ function App() {
 
 
   const getWeather = async () => {
+    
     setWeatherData([])
    
     try {
@@ -39,10 +40,8 @@ function App() {
     setSearchTerm('')
   }
 
-  
-
   return (
-    <div className="bg-gray-800 flex items-center justify-center w-screen h-screen py-10">
+    <div className="bg-gray-800 flex items-center justify-center max-w-screen-2xl h-screen py-5">
       <div className="flex w-3/4 min-h-full rounded-3xl shadow-lg m-auto bg-gray-100">
           {/* form card section  */}
         <div className="form-container">
@@ -86,9 +85,9 @@ function App() {
                 <h1 className="text-gray-300 text-4xl font-bold uppercase">{noData}</h1>
               </div> :
               <>
-                <h1 className="text-3xl text-gray-800 mt-0 mb-2">Today</h1>
+                <h1 className="text-2xl text-gray-800 mt-0 mb-2">Today</h1>
                 <DetailCard weather_icon={weatherIcon} data={weatherData} />
-                <h1 className="text-3xl text-gray-600 mb-4 mt-2">{city}</h1>
+                <h1 className="text-2xl text-gray-600 mb-4 mt-2">{city}</h1>
                 <ul className="grid grid-cols-2  gap-2">
                   {weatherData.list.map((days, index) => {
                     if(index > 0){

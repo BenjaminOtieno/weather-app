@@ -7,7 +7,7 @@ function SummaryCard({day}) {
     return (
         <li className="container p-4 flex items-center justify-center bg-gray-200 rounded-lg my-auto mr-1">
             <div className="my-auto">
-                <p className="font-bold text-3xl text-pink-600 mb-2">{Math.round(day.main.temp)}&deg;C</p>
+                <p className="font-bold text-3xl text-pink-500 mb-2">{Math.round(day.main.temp)}&deg;C</p>
                 <p className="text-2xl text-gray-800 tracking-widest">{day.weather[0].main}
                     <img src={day_icon} className="w-1/4 inline" />
                 </p>
