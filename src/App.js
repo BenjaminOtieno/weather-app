@@ -1,4 +1,5 @@
-import React,{ useState } from "react";
+import { data } from "autoprefixer";
+import React,{ useEffect, useState } from "react";
 import DetailCard from "./components/DetailCard";
 import SummaryCard from "./components/SummaryCard";
 
@@ -12,7 +13,6 @@ function App() {
   const [weatherData, setWeatherData] = useState([])
   const [city, setCity] = useState('Unknown location')
   const [weatherIcon, setWeatherIcon] = useState(`${process.env.REACT_APP_ICON_URL}10n@2x.png`)
-  console.log(weatherIcon)
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
@@ -24,21 +24,45 @@ function App() {
   }
 
 
+  // useEffect(()=>{
+
+  //   function getWeather(){
+  //     fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&APPID=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`)
+  //     .then(res=>res.json())
+  //     .then(data=>{
+  //       setWeatherData(data)
+  //       setCity(`${data.city.name}, ${data.city.country}`)
+  //       setWeatherIcon(`${process.env.REACT_APP_ICON_URL + data.list[0].weather[0]["icon"]}@4x.png`)
+  //   })}
+
+  //   function handleSubmit(e){
+  //       e.preventDefault()
+  //       getWeather(searchTerm)
+  //   }
+  // },[weatherData])
+
   const getWeather = async () => {
-    
-    setWeatherData([])
-   
-    try {
-      let res = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&APPID=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`)
-      let data = await res.json()
-      setWeatherData(data)
-      setCity(`${data.city.name}, ${data.city.country}`)
-      setWeatherIcon(`${process.env.REACT_APP_ICON_URL + data.list[0].weather[0]["icon"]}@4x.png`)
-    } catch (error) {
-      console.log(error)
-    }
-    setSearchTerm('')
+      setWeatherData([])
+      try{
+
+        let res = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&APPID=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`)
+        let data = await res.json()
+        if(data.cod != 200) { 
+          // console.log(typeof data.cod)
+          setNoData('Location Not Found')
+          setCity('Unknown Location')
+          return
+        }
+        setWeatherData(data)
+        setCity(`${data.city.name}, ${data.city.country}`)
+        setWeatherIcon(`${process.env.REACT_APP_ICON_URL + data.list[0].weather[0]["icon"]}@4x.png`)
+
+      }catch(error){
+        console.log(error)
+      }
+         
   }
+
 
   return (
     <div className="bg-gray-800 flex items-center justify-center max-w-screen-2xl h-screen py-5">
@@ -85,11 +109,11 @@ function App() {
                 <h1 className="text-gray-300 text-4xl font-bold uppercase">{noData}</h1>
               </div> :
               <>
-                <h1 className="text-2xl text-gray-800 mt-0 mb-2">Today</h1>
+                <h1 className="text-5xl text-gray-800 mt-auto mb-4">Today</h1>
                 <DetailCard weather_icon={weatherIcon} data={weatherData} />
-                <h1 className="text-2xl text-gray-600 mb-4 mt-2">{city}</h1>
+                <h1 className="text-3xl text-gray-600 mb-4 mt-10">More On {city}</h1>
                 <ul className="grid grid-cols-2  gap-2">
-                  {weatherData.list.map((days, index) => {
+                  {weatherData.list.map( (days, index) => {
                     if(index > 0){
                     return (
                       <SummaryCard key={index} day={days} />
