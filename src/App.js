@@ -26,7 +26,7 @@ function App() {
     setWeatherData([])
     try {
       let res = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&APPID=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&APPID=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`
       )
       let data = await res.json()
       console.log(typeof data.cod)
