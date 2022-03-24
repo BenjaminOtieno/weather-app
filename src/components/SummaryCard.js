@@ -13,7 +13,7 @@ function SummaryCard({ day }) {
         </p>
         <p className=' text-sm lg:text-2xl text-gray-800 tracking-widest'>
           {day.weather[0].main}
-          <img src={day_icon} className='w-1/4 inline' />
+          <img alt='img2.png' src={day_icon} className='w-1/4 inline' />
         </p>
         <p className='text-gray-400 text-xs uppercase tracking-widest'>
           {day.weather[0].description}
