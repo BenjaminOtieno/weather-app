@@ -18,5 +18,5 @@ h1 {
   background: url('./assets/substance-cannabis-market-sparks-lake-bg.jpg')
     no-repeat 50% 40% / cover;
   height: auto;
-  @apply w-2/4 p-5 rounded-3xl;
+  @apply w-2/4 p-1 md:p-3 lg:p-5 rounded-3xl;
 }
