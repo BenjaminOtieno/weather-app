@@ -51,7 +51,7 @@ function App() {
   return (
     <>
       <div className='lg:bg-gray-800 flex items-center justify-center max-w-screen-xl sm:max-w-screen-md md:max-w-screen-lg lg:max-w-screen-2xl min-h-screen lg:h-screen lg:py-5'>
-        <div className='flex w-4/4 md:w-4/4 lg:w-3/4 min-h-screen  lg:min-h-full rounded-3xl shadow-lg lg:m-auto bg-gray-100'>
+        <div className='flex w-4/4 md:w-4/4 lg:w-3/4 min-h-screen rounded-sm lg:min-h-full lg:rounded-3xl shadow-lg lg:m-auto bg-gray-100'>
           {/* form card section  */}
           <div className='form-container text-center'>
             <div className='flex items-center justify-center'>
@@ -69,8 +69,8 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className='flex flex-col items-center justify-center h-full'>
-              <h1 className='text-white text-lg md:text-xl lg:text-2xl'>
+            <div className='flex flex-col p-1.5 items-center justify-center h-full'>
+              <h1 className='text-white  text-lg md:text-xl lg:text-2xl'>
                 The Only Weather Forecast You Need
               </h1>
               <hr className='h-1 bg-white w-1/4 rounded-full my-5' />
@@ -97,7 +97,7 @@ function App() {
             </div>
           </div>
           {/* info card section  */}
-          <div className='w-2/4 p-5'>
+          <div className='w-2/4 p-2 lg:p-5'>
             {/* <Header /> */}
             <div className='flex flex-col my-0.5'>
               {/* card jsx  */}
