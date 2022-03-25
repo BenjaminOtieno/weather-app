@@ -4,12 +4,12 @@ function DetailCard({ weather_icon, data }) {
   const { clouds, main, weather } = data.list[0]
 
   return (
-    <div className='container p-1.5 lg:p-4 flex items-center justify-center shadow-lg rounded-lg bg-white h-1/3 mb-0.5'>
+    <div className='container pl-1.5 lg:p-4 flex items-center justify-center shadow-lg rounded-lg bg-white h-1/3 mb-0.5'>
       <div className='my-auto'>
         <p className='font-bold text-xl md:text-3xl lg:text-5xl text-pink-800 mb-2'>
           {Math.round(main.temp)}&deg;C
         </p>
-        <p className=' text-xl md:text-3xl lg:text-4xl text-gray-800 tracking-widest'>
+        <p className=' text-xs md:text-3xl lg:text-4xl text-gray-800 tracking-widest'>
           {weather[0].main}
           <img alt='img.png' src={weather_icon} className='w-1/4 inline' />
         </p>
