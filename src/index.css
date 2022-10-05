@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap')
-n;
+/*@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap')
+n;*/
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -15,7 +15,7 @@ h1 {
 }
 
 .form-container {
-  background: url('./assets/substance-cannabis-market-sparks-lake-bg.jpg')
+  background: url('./assets/sun-g39b4dcf99_1920.jpg')
     no-repeat 50% 40% / cover;
   height: auto;
   @apply w-2/4 p-1 md:p-3 lg:p-5 rounded-3xl;

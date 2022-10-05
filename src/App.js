@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import DetailCard from './components/DetailCard'
 import Footer from './components/Footer'
 import SummaryCard from './components/SummaryCard'
+import Header from './components/Header'
 
 function App() {
   const API_KEY = process.env.REACT_APP_API_KEY
@@ -14,25 +15,25 @@ function App() {
     `${process.env.REACT_APP_ICON_URL}10n@2x.png`
   )
 
-  const handleChange = (e) => {
-    setSearchTerm(e.target.value)
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value)
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = (event) => {
+    event.preventDefault()
     getWeather(searchTerm)
   }
 
   const getWeather = async () => {
     setWeatherData([])
     try {
-      let res = await fetch(
+      let resp = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&APPID=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`
       )
-      let data = await res.json()
+      let data = await resp.json()
       console.log(typeof data.cod)
       if (data.cod !== '200') {
-        setNoData('Location Not Found')
+        setNoData('Location Not Found!!Please input a valid city...')
         setCity('Unknown Location')
         return
       }
@@ -71,9 +72,9 @@ function App() {
             </div>
             <div className='flex flex-col p-1.5 items-center justify-center h-full'>
               <h1 className='text-white  text-lg md:text-xl lg:text-2xl'>
-                The Only Weather Forecast You Need
+                Whatever the Weather...Stay Ahead!
               </h1>
-              <hr className='h-1 bg-white w-1/4 rounded-full my-5' />
+              <hr className='h-1 bg-white w-1/2 rounded-full my-5' />
               <form
                 noValidate
                 onSubmit={handleSubmit}
@@ -89,16 +90,16 @@ function App() {
                 />
                 <button
                   type='submit'
-                  className='-ml-14 z-10 text-white text-sm'
+                  className='relative rounded-md lg:rounded-xl py-1 px-2 -ml-14 z-10 text-white text-sm bg-green-500 placeholder-green-200'
                 >
-                  search
+                  Search
                 </button>
               </form>
             </div>
           </div>
           {/* info card section  */}
           <div className='w-2/4 p-2 lg:p-5'>
-            {/* <Header /> */}
+             <Header /> 
             <div className='flex flex-col my-0.5'>
               {/* card jsx  */}
               {weatherData.length === 0 ? (
