@@ -1,4 +1,5 @@
-import moment from 'moment'
+import React from 'react';
+import moment from 'moment';
 
 function DetailCard({ weather_icon, data }) {
   const { clouds, main, weather } = data.list[0]
@@ -41,4 +42,4 @@ function DetailCard({ weather_icon, data }) {
   )
 }
 
-export default DetailCard
+export default DetailCard;

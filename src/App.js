@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import DetailCard from './components/DetailCard'
-import Footer from './components/Footer'
-import SummaryCard from './components/SummaryCard'
-import Header from './components/Header'
+import React, { useState } from 'react';
+import DetailCard from './components/DetailCard';
+import Footer from './components/Footer';
+import SummaryCard from './components/SummaryCard';
+import Header from './components/Header';
 
 function App() {
   const API_KEY = process.env.REACT_APP_API_KEY
@@ -137,4 +137,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

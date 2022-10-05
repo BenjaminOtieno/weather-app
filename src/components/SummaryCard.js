@@ -1,5 +1,5 @@
-import React from 'react'
-import moment from 'moment'
+import React from 'react';
+import moment from 'moment';
 
 function SummaryCard({ day }) {
   let day_icon = `${
@@ -31,4 +31,4 @@ function SummaryCard({ day }) {
   )
 }
 
-export default SummaryCard
+export default SummaryCard;
